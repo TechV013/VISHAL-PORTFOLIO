@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1428"/>
+      <stop offset="100%" stop-color="#13203A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.4" r="0.5">
+      <stop offset="0%" stop-color="#D4A857" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D4A857" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#D4A857" stroke-width="0.4" opacity="0.12"/>
+    </pattern>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A6843A"/>
+      <stop offset="50%" stop-color="#E8C887"/>
+      <stop offset="100%" stop-color="#D4A857"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top meta -->
+  <g font-family="'JetBrains Mono', monospace" font-size="20" fill="#D4A857" letter-spacing="3">
+    <text x="80" y="110" font-weight="500">PORTFOLIO · 2026</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="16" fill="#6F7E99" letter-spacing="2">
+    <text x="1120" y="110" text-anchor="end">JAIPUR · 26.91°N 75.78°E</text>
+  </g>
+
+  <!-- Main name -->
+  <g font-family="'Fraunces', 'Georgia', serif" letter-spacing="-1">
+    <text x="80" y="290" font-size="120" font-weight="400" fill="#F4F1E8">Vishal</text>
+    <text x="80" y="400" font-size="120" font-weight="400" font-style="italic" fill="url(#gold)">Jangir.</text>
+  </g>
+
+  <!-- Subtitle -->
+  <g font-family="'Fraunces', 'Georgia', serif" font-size="28" font-style="italic" fill="#B0BBD0">
+    <text x="80" y="460">A software engineer from Jaipur</text>
+  </g>
+
+  <!-- Footer -->
+  <g font-family="'JetBrains Mono', monospace" font-size="20">
+    <text x="80" y="540" fill="#D4A857">→ vishalkheri013@gmail.com</text>
+    <text x="80" y="575" fill="#5A8DEE">→ github.com/TechV013</text>
+  </g>
+
+  <!-- Decorative knot -->
+  <g transform="translate(940 315)" stroke="url(#gold)" stroke-width="1.4" fill="none" opacity="0.85">
+    <ellipse cx="0" cy="0" rx="120" ry="40"/>
+    <ellipse cx="0" cy="0" rx="120" ry="40" transform="rotate(60)"/>
+    <ellipse cx="0" cy="0" rx="120" ry="40" transform="rotate(120)"/>
+  </g>
+  <circle cx="940" cy="315" r="8" fill="#5A8DEE"/>
+  <circle cx="940" cy="315" r="14" fill="none" stroke="#5A8DEE" stroke-width="1" opacity="0.4"/>
+</svg>

@@ -1,0 +1,373 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Deep midnight blue base — luxe, recruiter-friendly */
+    --bg: 218 47% 8%;             /* #0A1428 */
+    --bg-2: 218 43% 12%;          /* #0F1A33 */
+    --bg-3: 217 40% 16%;          /* #16243F */
+    --surface: 217 38% 20%;       /* #1B2C4A */
+    --surface-2: 217 35% 26%;     /* #25395C */
+
+    /* Text — warm cream against blue, never pure white */
+    --ink: 38 35% 92%;            /* #F4F1E8 */
+    --ink-2: 218 25% 75%;         /* #B0BBD0 */
+    --muted: 218 18% 55%;         /* #6F7E99 */
+    --dim: 218 22% 38%;           /* #465775 */
+
+    /* Gold luxe — primary accent */
+    --gold: 38 60% 60%;           /* #D4A857 */
+    --gold-bright: 40 70% 72%;    /* #E8C887 */
+    --gold-deep: 36 55% 42%;      /* #A6843A */
+    --gold-soft: 38 60% 60% / 0.16;
+
+    /* Cobalt / soft blue — secondary accent */
+    --cobalt: 218 85% 68%;        /* #5A8DEE */
+    --cobalt-soft: 218 85% 68% / 0.14;
+
+    /* Status colors — muted, not neon */
+    --rose: 350 70% 68%;          /* #E07A8E */
+    --emerald: 155 45% 55%;       /* #5BB58A */
+    --amber: 38 85% 65%;          /* #F0B860 */
+
+    /* Lines / borders */
+    --rule: 38 60% 60% / 0.22;
+    --rule-dim: 218 22% 38% / 0.4;
+    --rule-glass: 38 60% 60% / 0.12;
+
+    /* Semantic shadcn-style aliases */
+    --background: var(--bg);
+    --foreground: var(--ink);
+    --card: var(--bg-2);
+    --card-foreground: var(--ink);
+    --popover: var(--bg-2);
+    --popover-foreground: var(--ink);
+    --primary: var(--gold);
+    --primary-foreground: var(--bg);
+    --secondary: var(--surface);
+    --secondary-foreground: var(--ink);
+    --muted-bg: var(--bg-2);
+    --muted-foreground: var(--muted);
+    --accent: var(--cobalt);
+    --accent-foreground: var(--ink);
+    --destructive: var(--rose);
+    --destructive-foreground: var(--ink);
+    --border: var(--rule);
+    --input: var(--rule);
+    --ring: var(--gold);
+    --radius: 0px;
+  }
+
+  * {
+    @apply border-[hsl(var(--border))];
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: var(--font-body), "Inter", system-ui, sans-serif;
+    background-color: hsl(var(--bg));
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(38 60% 60% / 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 30%, hsl(218 85% 68% / 0.06), transparent),
+      radial-gradient(ellipse 60% 50% at 10% 80%, hsl(38 60% 60% / 0.05), transparent);
+    background-attachment: fixed;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Custom cursor: hide the OS cursor entirely, the JS-rendered
+     katana replaces it. Activated by .katana-cursor-on on <html>. */
+  @media (hover: hover) and (pointer: fine) {
+    html.katana-cursor-on,
+    html.katana-cursor-on *,
+    html.katana-cursor-on *:hover {
+      cursor: none !important;
+    }
+  }
+
+  ::selection {
+    background: hsl(var(--gold) / 0.4);
+    color: hsl(var(--ink));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), "Fraunces", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  code, pre, kbd, .font-mono {
+    font-family: var(--font-mono), "JetBrains Mono", monospace;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--gold) / 0.3);
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--gold) / 0.55);
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16;
+  }
+
+  .display {
+    font-family: var(--font-display), "Fraunces", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+
+  .display-italic {
+    font-family: var(--font-display), "Fraunces", Georgia, serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+
+  .mono {
+    font-family: var(--font-mono), "JetBrains Mono", monospace;
+  }
+
+  .numeral {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono), "JetBrains Mono", monospace;
+  }
+
+  /* Glass card — luxe, recruiter-friendly */
+  .glass {
+    background: hsl(218 47% 8% / 0.5);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid hsl(var(--rule-glass));
+  }
+
+  .glass-strong {
+    background: hsl(218 43% 12% / 0.7);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid hsl(var(--rule));
+  }
+
+  /* Luxe hairline — gold, refined */
+  .hairline {
+    border: 1px solid hsl(var(--rule));
+  }
+
+  .hairline-dim {
+    border: 1px solid hsl(var(--rule-dim));
+  }
+
+  /* Gold text glow — subtle, not neon */
+  .glow-gold {
+    color: hsl(var(--gold-bright));
+    text-shadow:
+      0 0 12px hsl(38 70% 72% / 0.35),
+      0 0 28px hsl(38 70% 72% / 0.15);
+  }
+
+  .glow-cobalt {
+    color: hsl(var(--cobalt));
+    text-shadow:
+      0 0 12px hsl(218 85% 68% / 0.35),
+      0 0 28px hsl(218 85% 68% / 0.15);
+  }
+
+  .glow-rose {
+    color: hsl(var(--rose));
+    text-shadow:
+      0 0 12px hsl(350 70% 68% / 0.3),
+      0 0 28px hsl(350 70% 68% / 0.12);
+  }
+
+  /* Gold box glow */
+  .shadow-gold {
+    box-shadow:
+      0 0 24px hsl(38 60% 60% / 0.18),
+      0 0 56px hsl(38 60% 60% / 0.08);
+  }
+
+  .shadow-gold-soft {
+    box-shadow: 0 0 18px hsl(38 60% 60% / 0.12);
+  }
+
+  /* Section number — luxe, with gold underline */
+  .term {
+    font-family: var(--font-mono), "JetBrains Mono", monospace;
+    color: hsl(var(--gold));
+  }
+
+  /* Underline link with arrow prefix */
+  .ink-link {
+    @apply relative inline-block;
+    transition: color 0.2s;
+  }
+  .ink-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: hsl(var(--gold));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ink-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .ink-link:hover {
+    color: hsl(var(--gold));
+  }
+
+  /* Magnetic button */
+  .magnetic {
+    @apply relative inline-flex items-center gap-2 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-all;
+    background: linear-gradient(180deg, hsl(38 70% 68%), hsl(36 55% 50%));
+    color: hsl(var(--bg));
+    border: 1px solid hsl(38 70% 72% / 0.6);
+    box-shadow: 0 8px 24px hsl(38 60% 50% / 0.18), inset 0 1px 0 hsl(40 80% 82% / 0.4);
+  }
+  .magnetic:hover {
+    box-shadow: 0 12px 36px hsl(38 60% 50% / 0.28), inset 0 1px 0 hsl(40 80% 82% / 0.4);
+    transform: translateY(-1px);
+  }
+  .magnetic-ghost {
+    @apply relative inline-flex items-center gap-2 px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] transition-all;
+    background: transparent;
+    color: hsl(var(--ink));
+    border: 1px solid hsl(var(--rule));
+  }
+  .magnetic-ghost:hover {
+    border-color: hsl(var(--gold) / 0.6);
+    color: hsl(var(--gold-bright));
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    flex-shrink: 0;
+    animation: marquee 40s linear infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+  .pulse {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+
+  /* Heading underline — gold, centered, short */
+  .heading-mark {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.2em;
+  }
+  .heading-mark::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0.6em;
+    background: hsl(var(--gold));
+  }
+
+  /* Subtle film grain */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: 200px 200px;
+    mix-blend-mode: overlay;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float-y {
+  animation: float-y 4s ease-in-out infinite;
+}
+
+@keyframes text-rise {
+  from { opacity: 0; transform: translateY(110%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.text-rise > span {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.text-rise.in > span {
+  animation: text-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.text-rise.in > span:nth-child(2) { animation-delay: 0.025s; }
+.text-rise.in > span:nth-child(3) { animation-delay: 0.05s; }
+.text-rise.in > span:nth-child(4) { animation-delay: 0.075s; }
+.text-rise.in > span:nth-child(5) { animation-delay: 0.1s; }
+.text-rise.in > span:nth-child(6) { animation-delay: 0.125s; }
+.text-rise.in > span:nth-child(7) { animation-delay: 0.15s; }
+.text-rise.in > span:nth-child(8) { animation-delay: 0.175s; }
+.text-rise.in > span:nth-child(9) { animation-delay: 0.2s; }
+.text-rise.in > span:nth-child(10) { animation-delay: 0.225s; }
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
